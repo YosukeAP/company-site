@@ -1,0 +1,17 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="webGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:0.2" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#webGrad)" rx="8"/>
+  <rect x="50" y="60" width="300" height="180" fill="white" rx="4" opacity="0.9"/>
+  <rect x="50" y="60" width="300" height="40" fill="#3B82F6" rx="4"/>
+  <circle cx="70" cy="80" r="8" fill="white" opacity="0.8"/>
+  <circle cx="95" cy="80" r="8" fill="white" opacity="0.8"/>
+  <circle cx="120" cy="80" r="8" fill="white" opacity="0.8"/>
+  <rect x="70" y="130" width="250" height="12" fill="#E5E7EB" rx="2"/>
+  <rect x="70" y="155" width="200" height="12" fill="#E5E7EB" rx="2"/>
+  <rect x="70" y="180" width="220" height="12" fill="#E5E7EB" rx="2"/>
+</svg>

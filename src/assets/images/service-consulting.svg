@@ -1,0 +1,17 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="consGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#D97706;stop-opacity:0.2" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#consGrad)" rx="8"/>
+  <circle cx="200" cy="120" r="50" fill="white" opacity="0.9"/>
+  <circle cx="200" cy="120" r="35" fill="#F59E0B" opacity="0.3"/>
+  <path d="M 150 200 L 200 150 L 250 200" fill="none" stroke="white" stroke-width="3" opacity="0.9"/>
+  <path d="M 100 230 Q 200 180 300 230" fill="none" stroke="white" stroke-width="2" opacity="0.9"/>
+  <circle cx="150" cy="200" r="8" fill="white" opacity="0.9"/>
+  <circle cx="250" cy="200" r="8" fill="white" opacity="0.9"/>
+  <circle cx="100" cy="230" r="8" fill="white" opacity="0.9"/>
+  <circle cx="300" cy="230" r="8" fill="white" opacity="0.9"/>
+</svg>
