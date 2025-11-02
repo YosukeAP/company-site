@@ -10,10 +10,15 @@ const urlFor = (src:any) => builder.image(src)
 
 export async function getStaticPaths() {
   // ここで全記事の slug を集めて静的に生成（ビルド時）
-  const slugs: {slug: {current: string}}[] = await sanity.fetch(
-    `*[_type=="post" && defined(slug.current)]{slug}`
-  )
-  return slugs.map(({slug}) => ({ params: { slug: slug.current } }))
+  try {
+    const slugs: {slug: {current: string}}[] = await sanity.fetch(
+      `*[_type=="post" && defined(slug.current)]{slug}`
+    )
+    return slugs.map(({slug}) => ({ params: { slug: slug.current } }))
+  } catch (error) {
+    console.warn('Sanityからデータを取得できませんでした:', error)
+    return []
+  }
 }
 
 const { slug } = Astro.params
@@ -84,21 +89,7 @@ const articleSchema = {
     </time>
 
     <article class="prose prose-lg max-w-none">
-      <PortableText
-        value={post.body}
-        components={{
-          // Portable Text内の画像表示（altに対応）
-          types: {
-            image: ({value}:any) => (
-              <img
-                src={urlFor(value).width(1200).fit('max').url()}
-                alt={value?.alt || ''}
-                class="w-full h-auto rounded-lg my-6"
-              />
-            )
-          }
-        }}
-      />
+      <PortableText value={post.body} />
     </article>
   </div>
 </Base>
