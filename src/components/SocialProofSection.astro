@@ -1,0 +1,59 @@
+---
+// P-01 [H-4] 信頼・実績 (Social Proof) - AssetPartners版
+const metrics = [
+  { value: "50+", label: "支援プロジェクト数" },
+  { value: "300%", label: "コンテンツ経由リードUP (平均)" },
+  { value: "100+", label: "提携専門家ネットワーク" },
+];
+---
+
+<section class="py-20 sm:py-28 lg:py-32 bg-gradient-to-b from-white via-purple-50/20 to-white">
+  <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <div class="text-center mb-16 sm:mb-20 lg:mb-24">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-[1.15] tracking-tight">
+        私たちが選ばれる理由
+      </h2>
+      <p class="text-lg sm:text-xl lg:text-2xl text-gray-600 text-balance">
+        AssetPartnersがBtoBマーケティングの課題解決で実現してきた実績
+      </p>
+    </div>
+
+    <!-- Metrics Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 lg:gap-8 mb-16 sm:mb-20 lg:mb-24">
+      {metrics.map((metric, index) => (
+        <div key={index} class="text-center bg-white rounded-3xl p-10 sm:p-12 shadow-xl border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group">
+          <div class="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black bg-gradient-to-br from-blue-600 via-blue-500 to-purple-600 bg-clip-text text-transparent mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+            {metric.value}
+          </div>
+          <div class="text-lg sm:text-xl text-gray-700 font-bold leading-relaxed">
+            {metric.label}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Customer Logos Placeholder -->
+    <div class="text-center">
+      <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-10 sm:mb-12">ご紹介企業</h3>
+      <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-8 lg:gap-10 opacity-60 hover:opacity-80 transition-opacity duration-300">
+        {/* プレースホルダー用のグレーボックス */}
+        <div class="bg-gray-200 rounded-2xl w-32 h-20 sm:w-36 sm:h-24 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow">
+          <span class="text-gray-500 text-sm sm:text-base font-medium">企業ロゴ1</span>
+        </div>
+        <div class="bg-gray-200 rounded-2xl w-32 h-20 sm:w-36 sm:h-24 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow">
+          <span class="text-gray-500 text-sm sm:text-base font-medium">企業ロゴ2</span>
+        </div>
+        <div class="bg-gray-200 rounded-2xl w-32 h-20 sm:w-36 sm:h-24 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow">
+          <span class="text-gray-500 text-sm sm:text-base font-medium">企業ロゴ3</span>
+        </div>
+        <div class="bg-gray-200 rounded-2xl w-32 h-20 sm:w-36 sm:h-24 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow">
+          <span class="text-gray-500 text-sm sm:text-base font-medium">企業ロゴ4</span>
+        </div>
+        <div class="bg-gray-200 rounded-2xl w-32 h-20 sm:w-36 sm:h-24 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow">
+          <span class="text-gray-500 text-sm sm:text-base font-medium">企業ロゴ5</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

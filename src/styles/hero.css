@@ -1,0 +1,67 @@
+/* Hero Section - Universal Viewport Height Support */
+.hero-full-screen {
+  height: 100vh;
+  height: -webkit-fill-available; /* iOS Safari support */
+  min-height: 100vh;
+}
+
+/* Modern viewport units support */
+@supports (height: 100dvh) {
+  .hero-full-screen {
+    height: 100dvh;
+    min-height: 100dvh;
+  }
+}
+
+/* Container adjustments for universal fit */
+.hero-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .hero-container {
+    padding: 1.5rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-container {
+    padding: 1.5rem 3rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-container {
+    padding: 1.5rem 4rem;
+  }
+}
+
+/* Fluid typography for hero content */
+.hero-title {
+  font-size: clamp(1.875rem, 5vw, 4.5rem);
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+
+.hero-description {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+}
+
+.hero-label {
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+  margin-bottom: 1rem;
+}
+
+.hero-cta-button {
+  font-size: clamp(0.875rem, 1.25vw, 1rem);
+  padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2.5rem);
+}
+

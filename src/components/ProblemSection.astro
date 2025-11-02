@@ -1,0 +1,54 @@
+---
+// P-01 [H-2] 課題提起セクション
+const painPoints = [
+  {
+    title: "新規事業のマーケが属人化し、スケールしない",
+    description: "担当者の知識が個人に集約されており、組織としての資産にならない",
+  },
+  {
+    title: "SEOコンテンツの『品質』と『量産』が両立できない",
+    description: "量を優先すると品質が下がり、品質を重視すると制作スピードが遅い",
+  },
+  {
+    title: "AIを導入したが、成果に繋がる活用法がわからない",
+    description: "ツールは使えるものの、具体的な成果に結びつける戦略がない",
+  },
+];
+---
+
+<section class="py-20 sm:py-28 lg:py-32 bg-gradient-to-b from-white via-gray-50/50 to-white">
+  <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <div class="text-center mb-16 sm:mb-20 lg:mb-24">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-[1.15] tracking-tight">
+        貴社のマーケティングは、<br class="hidden sm:block" />
+        こんな『資産』を眠らせていませんか？
+      </h2>
+      <p class="text-lg sm:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed text-balance">
+        BtoBマーケティングの多くが直面している、共通の課題とは
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 lg:gap-8">
+      {painPoints.map((pain, index) => (
+        <div key={index} class="bg-white rounded-2xl p-8 sm:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-gray-200 hover:-translate-y-1 group">
+          <div class="flex items-start gap-5 mb-6">
+            <div class="w-14 h-14 bg-gradient-to-br from-red-100 to-red-50 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-md">
+              <svg class="w-7 h-7 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3 leading-tight">
+                {pain.title}
+              </h3>
+              <p class="text-base text-gray-600 leading-relaxed">
+                {pain.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+

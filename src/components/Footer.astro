@@ -1,0 +1,82 @@
+---
+const footerLinks = [
+  { label: "トップ", href: "/" },
+  { label: "私たちについて", href: "/about" },
+  { label: "サービス", href: "/services" },
+  { label: "導入事例", href: "/case-studies" },
+  { label: "コンテンツハブ", href: "/content" },
+  { label: "お問い合わせ", href: "/contact" },
+];
+
+const legalLinks = [
+  { label: "プライバシーポリシー", href: "#" },
+  { label: "利用規約", href: "#" },
+  { label: "サイトマップ", href: "#" },
+];
+---
+
+<footer class="bg-gray-900 text-gray-100 py-12 sm:py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Footer Content -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 mb-8 sm:mb-12">
+      <!-- Company Info -->
+      <div>
+        <h3 class="text-lg font-bold mb-2 text-white">
+          AssetPartners株式会社
+        </h3>
+        <p class="text-gray-400 text-sm mb-4">
+          BtoBマーケティング・AI活用・SEOコンサルティング
+        </p>
+        <p class="text-gray-400 text-xs">
+          東京都渋谷区道玄坂1丁目12番1号<br />
+          渋谷マークシティウエスト21階
+        </p>
+      </div>
+
+      <!-- Main Links -->
+      <div>
+        <h4 class="font-bold mb-4 text-white text-sm uppercase">
+          メニュー
+        </h4>
+        <ul class="space-y-2">
+          {footerLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-gray-400 hover:text-white transition-colors text-sm"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Legal Links -->
+      <div>
+        <h4 class="font-bold mb-4 text-white text-sm uppercase">
+          法的情報
+        </h4>
+        <ul class="space-y-2">
+          {legalLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-gray-400 hover:text-white transition-colors text-sm"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="border-t border-gray-800 pt-8 text-center">
+      <p class="text-gray-400 text-sm">
+        © {new Date().getFullYear()} AssetPartners株式会社. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
