@@ -7,10 +7,35 @@ import Base from '../layouts/Base.astro';
 <Base title="お問い合わせ | 会社サイト" description="お問い合わせフォームをご記入ください。担当者よりご連絡いたします。">
   <div class="max-w-2xl mx-auto">
     <h1 class="text-3xl font-bold mb-4">お問い合わせ</h1>
-    <p class="mb-8 text-gray-600">お問い合わせフォームをご記入ください。担当者よりご連絡いたします。</p>
+    <p class="mb-8 text-gray-600">
+      お問い合わせフォームをご記入ください。担当者よりご連絡いたします。<br />
+      <span class="text-sm text-red-600">*</span> は必須項目です。
+    </p>
     
-    <form name="contact" method="POST" data-netlify="true" class="space-y-6">
+    <!-- 
+      Netlify Forms設定:
+      - data-netlify="true": Netlifyフォーム機能を有効化
+      - data-netlify-honeypot="bot-field": スパム対策（ボットフィールド）
+      - action="/contact/success": 送信成功時のリダイレクト先
+    -->
+    <form 
+      name="contact" 
+      method="POST" 
+      action="/contact/success"
+      data-netlify="true" 
+      data-netlify-honeypot="bot-field"
+      class="space-y-6"
+    >
+      {/* Netlify用の隠しフィールド */}
       <input type="hidden" name="form-name" value="contact" />
+      
+      {/* スパム対策用のハニーポット（人間には見えない） */}
+      <div class="hidden">
+        <label>
+          Don't fill this out if you're human: 
+          <input name="bot-field" />
+        </label>
+      </div>
       
       <div>
         <label for="name" class="block mb-2 font-semibold">
@@ -21,6 +46,7 @@ import Base from '../layouts/Base.astro';
           id="name" 
           name="name" 
           required
+          placeholder="山田 太郎"
           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
         />
       </div>
@@ -34,18 +60,41 @@ import Base from '../layouts/Base.astro';
           id="email" 
           name="email" 
           required
+          placeholder="example@email.com"
           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
         />
       </div>
       
       <div>
-        <label for="subject" class="block mb-2 font-semibold">件名</label>
+        <label for="company" class="block mb-2 font-semibold">
+          会社名・組織名
+        </label>
         <input 
           type="text" 
-          id="subject" 
-          name="subject"
+          id="company" 
+          name="company"
+          placeholder="株式会社〇〇"
           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
         />
+      </div>
+      
+      <div>
+        <label for="inquiry-type" class="block mb-2 font-semibold">
+          お問い合わせ種別 <span class="text-red-600">*</span>
+        </label>
+        <select 
+          id="inquiry-type" 
+          name="inquiry-type"
+          required
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition bg-white"
+        >
+          <option value="">選択してください</option>
+          <option value="サービスについて">サービスについて</option>
+          <option value="お見積もり依頼">お見積もり依頼</option>
+          <option value="技術相談">技術相談</option>
+          <option value="採用について">採用について</option>
+          <option value="その他">その他</option>
+        </select>
       </div>
       
       <div>
@@ -57,16 +106,35 @@ import Base from '../layouts/Base.astro';
           name="message" 
           rows="8"
           required
+          placeholder="お問い合わせ内容を詳しくご記入ください"
           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition resize-vertical"
         ></textarea>
       </div>
       
+      <div class="bg-gray-50 p-4 rounded-lg text-sm text-gray-600">
+        <p class="mb-2">
+          <strong>個人情報の取り扱いについて</strong>
+        </p>
+        <p>
+          お預かりした個人情報は、お問い合わせへの回答およびサービスのご案内のみに使用し、
+          第三者に開示することはありません。
+        </p>
+      </div>
+      
       <button 
         type="submit"
-        class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-200"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg transition-colors duration-200 text-lg"
       >
         送信する
       </button>
     </form>
+    
+    <div class="mt-8 p-6 bg-blue-50 rounded-lg">
+      <h2 class="font-semibold mb-2">お急ぎの方</h2>
+      <p class="text-sm text-gray-700">
+        お電話でのお問い合わせも受け付けております。<br />
+        <strong>TEL: 03-1234-5678</strong>（平日 10:00-18:00）
+      </p>
+    </div>
   </div>
 </Base>

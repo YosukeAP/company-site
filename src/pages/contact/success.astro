@@ -1,0 +1,69 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base title="送信完了 | 会社サイト" description="お問い合わせありがとうございます">
+  <div class="max-w-2xl mx-auto text-center py-16">
+    <div class="mb-8">
+      <div class="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-6">
+        <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+      </div>
+      <h1 class="text-4xl font-bold mb-4">送信完了しました</h1>
+      <p class="text-xl text-gray-600 mb-8">
+        お問い合わせいただき、ありがとうございます。
+      </p>
+    </div>
+    
+    <div class="bg-blue-50 rounded-lg p-8 mb-8 text-left">
+      <h2 class="text-xl font-semibold mb-4">今後の流れ</h2>
+      <ol class="space-y-3">
+        <li class="flex items-start gap-3">
+          <span class="flex-shrink-0 flex items-center justify-center w-6 h-6 bg-blue-600 text-white rounded-full text-sm font-semibold">1</span>
+          <div>
+            <strong class="block">自動返信メールの確認</strong>
+            <span class="text-sm text-gray-600">ご入力いただいたメールアドレスに自動返信メールをお送りしています。</span>
+          </div>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="flex-shrink-0 flex items-center justify-center w-6 h-6 bg-blue-600 text-white rounded-full text-sm font-semibold">2</span>
+          <div>
+            <strong class="block">担当者からの連絡</strong>
+            <span class="text-sm text-gray-600">営業日2〜3日以内に、担当者よりご連絡いたします。</span>
+          </div>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="flex-shrink-0 flex items-center justify-center w-6 h-6 bg-blue-600 text-white rounded-full text-sm font-semibold">3</span>
+          <div>
+            <strong class="block">詳細のヒアリング</strong>
+            <span class="text-sm text-gray-600">お客様のニーズに合わせて、最適なご提案をさせていただきます。</span>
+          </div>
+        </li>
+      </ol>
+    </div>
+    
+    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8 text-left">
+      <p class="text-sm text-gray-700">
+        <strong>⚠️ メールが届かない場合</strong><br />
+        迷惑メールフォルダをご確認ください。それでも届かない場合は、お手数ですが再度お問い合わせいただくか、
+        お電話（03-1234-5678）にてご連絡ください。
+      </p>
+    </div>
+    
+    <div class="flex gap-4 justify-center">
+      <a 
+        href="/" 
+        class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-200"
+      >
+        トップページへ
+      </a>
+      <a 
+        href="/services" 
+        class="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold px-8 py-3 rounded-lg transition-colors duration-200"
+      >
+        サービス一覧を見る
+      </a>
+    </div>
+  </div>
+</Base>
