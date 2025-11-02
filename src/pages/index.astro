@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
 import {createClient} from '@sanity/client'
-import {PortableText} from 'astro-portabletext'
 
 const client = createClient({
   projectId: 'vdcrzio7',
@@ -10,23 +9,104 @@ const client = createClient({
   useCdn: true,
 })
 
-const query = `*[_type=="post"]|order(_createdAt desc)[0]{title, body}`
-const post = await client.fetch(query)
+// 最新記事を3件取得
+const posts = await client.fetch(`
+  *[_type=="post"]|order(_createdAt desc)[0..2]{
+    title,
+    "slug": slug.current,
+    _createdAt
+  }
+`)
+
+const services = [
+  {
+    title: 'Webサイト制作',
+    description: '最新技術を活用した高品質なWebサイトを制作します。レスポンシブデザインでどのデバイスでも快適な体験を提供します。',
+    icon: '🌐'
+  },
+  {
+    title: 'システム開発',
+    description: 'お客様のビジネスに最適なシステムを設計・開発します。業務効率化を実現するカスタムソリューションを提供します。',
+    icon: '⚙️'
+  },
+  {
+    title: 'コンサルティング',
+    description: 'DX推進やIT戦略立案をサポートします。豊富な経験を活かして、最適なソリューションをご提案します。',
+    icon: '💡'
+  }
+]
 ---
 
-<Base title="会社サイト" description="会社サイトのホームページです。">
-  <div class="prose max-w-none">
-    <h1 class="text-3xl font-bold mb-6">最新記事</h1>
+<Base title="会社サイト | デジタルソリューションのパートナー" description="最新技術を活用したWebサイト制作、システム開発、コンサルティングサービスを提供します。">
+  <!-- Hero Section -->
+  <section class="py-16 text-center">
+    <h1 class="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+      デジタルの力で<br />ビジネスを加速させる
+    </h1>
+    <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+      最新技術とクリエイティブな発想で、お客様のビジネス課題を解決します。
+    </p>
+    <div class="flex gap-4 justify-center">
+      <a href="/services" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-200">
+        サービス一覧
+      </a>
+      <a href="/contact" class="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold px-8 py-3 rounded-lg transition-colors duration-200">
+        お問い合わせ
+      </a>
+    </div>
+  </section>
 
-    {post ? (
-      <>
-        <h2 class="text-2xl font-semibold mt-8 mb-4">{post.title}</h2>
-        <div class="mt-4">
-          <PortableText value={post.body} />
+  <!-- Services Section -->
+  <section class="py-16 bg-gray-50 -mx-6 px-6 rounded-lg">
+    <h2 class="text-3xl font-bold text-center mb-12">サービス</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      {services.map((service) => (
+        <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+          <div class="text-4xl mb-4">{service.icon}</div>
+          <h3 class="text-xl font-semibold mb-3">{service.title}</h3>
+          <p class="text-gray-600 mb-4">{service.description}</p>
         </div>
-      </>
-    ) : (
-      <p class="text-gray-600">まだ記事がありません。</p>
-    )}
-  </div>
+      ))}
+    </div>
+    <div class="text-center mt-12">
+      <a href="/services" class="text-blue-600 hover:text-blue-800 font-semibold">
+        すべてのサービスを見る →
+      </a>
+    </div>
+  </section>
+
+  <!-- Latest Blog Posts -->
+  {posts.length > 0 && (
+    <section class="py-16">
+      <h2 class="text-3xl font-bold mb-8">最新記事</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        {posts.map((post: any) => (
+          <a href={`/blog/${post.slug}`} class="block p-6 border border-gray-200 rounded-lg hover:shadow-md transition-shadow group">
+            <h3 class="text-xl font-semibold mb-2 group-hover:text-blue-600 transition-colors">
+              {post.title}
+            </h3>
+            <time class="text-sm text-gray-500">
+              {new Date(post._createdAt).toLocaleDateString('ja-JP')}
+            </time>
+          </a>
+        ))}
+      </div>
+      <div class="text-center mt-8">
+        <a href="/blog" class="text-blue-600 hover:text-blue-800 font-semibold">
+          ブログ一覧を見る →
+        </a>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-blue-600 text-white -mx-6 px-6 rounded-lg text-center">
+    <h2 class="text-3xl font-bold mb-4">プロジェクトを始めましょう</h2>
+    <p class="text-xl mb-8 opacity-90">
+      お客様のビジネス課題について、お気軽にご相談ください。
+    </p>
+    <a href="/contact" class="inline-block bg-white text-blue-600 hover:bg-gray-100 font-semibold px-8 py-3 rounded-lg transition-colors duration-200">
+      無料相談はこちら
+    </a>
+  </section>
 </Base>

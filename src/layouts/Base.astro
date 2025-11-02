@@ -55,6 +55,18 @@ const currentPath = Astro.url.pathname;
 					ホーム
 				</a>
 				<a 
+					href="/services" 
+					class={`hover:text-blue-600 transition-colors ${currentPath === '/services' ? 'text-blue-600 font-semibold' : ''}`}
+				>
+					サービス
+				</a>
+				<a 
+					href="/about" 
+					class={`hover:text-blue-600 transition-colors ${currentPath === '/about' ? 'text-blue-600 font-semibold' : ''}`}
+				>
+					会社概要
+				</a>
+				<a 
 					href="/blog" 
 					class={`hover:text-blue-600 transition-colors ${currentPath.startsWith('/blog') ? 'text-blue-600 font-semibold' : ''}`}
 				>

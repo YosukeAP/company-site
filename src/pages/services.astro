@@ -1,0 +1,137 @@
+---
+import Base from '../layouts/Base.astro';
+
+const services = [
+  {
+    title: 'Webサイト制作',
+    icon: '🌐',
+    description: '最新技術を活用した高品質なWebサイトを制作します。',
+    features: [
+      'レスポンシブデザイン対応',
+      'SEO最適化',
+      'パフォーマンスチューニング',
+      'CMS導入・カスタマイズ',
+      '保守・運用サポート'
+    ],
+    price: '30万円〜'
+  },
+  {
+    title: 'システム開発',
+    icon: '⚙️',
+    description: 'お客様のビジネスに最適なシステムを設計・開発します。',
+    features: [
+      '業務システム開発',
+      'Webアプリケーション開発',
+      'API設計・開発',
+      'データベース設計',
+      'クラウドインフラ構築'
+    ],
+    price: '100万円〜'
+  },
+  {
+    title: 'コンサルティング',
+    icon: '💡',
+    description: 'DX推進やIT戦略立案をサポートします。',
+    features: [
+      'DX推進支援',
+      'IT戦略立案',
+      '技術選定コンサルティング',
+      'システム評価・改善提案',
+      '技術研修・教育'
+    ],
+    price: '20万円〜/月'
+  },
+  {
+    title: 'UI/UXデザイン',
+    icon: '🎨',
+    description: 'ユーザー体験を重視したデザインを提供します。',
+    features: [
+      'ユーザーリサーチ',
+      'ワイヤーフレーム作成',
+      'UIデザイン',
+      'プロトタイピング',
+      'ユーザビリティテスト'
+    ],
+    price: '50万円〜'
+  },
+  {
+    title: 'モバイルアプリ開発',
+    icon: '📱',
+    description: 'iOS・Android対応のモバイルアプリを開発します。',
+    features: [
+      'ネイティブアプリ開発',
+      'クロスプラットフォーム開発',
+      'アプリ申請サポート',
+      'プッシュ通知実装',
+      'アプリ保守・運用'
+    ],
+    price: '150万円〜'
+  },
+  {
+    title: 'ECサイト構築',
+    icon: '🛒',
+    description: '売上を最大化するECサイトを構築します。',
+    features: [
+      '決済システム導入',
+      '在庫管理システム',
+      'カート機能実装',
+      '配送管理システム',
+      'アクセス解析設定'
+    ],
+    price: '80万円〜'
+  }
+]
+---
+
+<Base title="サービス一覧 | 会社サイト" description="Webサイト制作、システム開発、コンサルティングなど、幅広いサービスを提供しています。">
+  <div class="mb-12">
+    <h1 class="text-4xl font-bold mb-4">サービス一覧</h1>
+    <p class="text-xl text-gray-600">
+      お客様のビジネス課題に合わせて、最適なソリューションを提供します。
+    </p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-8">
+    {services.map((service) => (
+      <div class="bg-white p-8 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="text-5xl">{service.icon}</div>
+          <div class="flex-1">
+            <h2 class="text-2xl font-bold mb-2">{service.title}</h2>
+            <p class="text-gray-600">{service.description}</p>
+          </div>
+        </div>
+        
+        <div class="mb-4">
+          <h3 class="font-semibold mb-3 text-gray-700">主な内容</h3>
+          <ul class="space-y-2">
+            {service.features.map((feature) => (
+              <li class="flex items-start gap-2">
+                <span class="text-blue-600 mt-1">✓</span>
+                <span class="text-gray-700">{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        <div class="pt-4 border-t border-gray-200">
+          <div class="flex items-center justify-between">
+            <span class="text-gray-600">料金目安</span>
+            <span class="text-xl font-bold text-blue-600">{service.price}</span>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- CTA Section -->
+  <section class="mt-16 py-12 bg-gradient-to-r from-blue-50 to-purple-50 -mx-6 px-6 rounded-lg text-center">
+    <h2 class="text-3xl font-bold mb-4">お客様のプロジェクトについて相談しませんか？</h2>
+    <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+      まずはお気軽にご相談ください。お客様のニーズに合わせて、最適なプランをご提案いたします。
+    </p>
+    <a href="/contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-200">
+      無料相談を申し込む
+    </a>
+  </section>
+</Base>

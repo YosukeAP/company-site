@@ -1,0 +1,158 @@
+---
+import Base from '../layouts/Base.astro';
+
+const companyInfo = {
+  name: '株式会社テックソリューション',
+  established: '2020年4月',
+  capital: '1,000万円',
+  employees: '25名',
+  ceo: '山田 太郎',
+  address: '〒100-0001 東京都千代田区千代田1-1-1',
+  phone: '03-1234-5678',
+  email: 'info@example.com'
+}
+
+const values = [
+  {
+    title: '顧客第一',
+    description: 'お客様のビジネス成功を最優先に考え、最適なソリューションを提供します。',
+    icon: '🤝'
+  },
+  {
+    title: '技術革新',
+    description: '常に最新技術をキャッチアップし、より良いサービスを提供し続けます。',
+    icon: '🚀'
+  },
+  {
+    title: '誠実さ',
+    description: '透明性のあるコミュニケーションと確実な納品で信頼を築きます。',
+    icon: '💎'
+  }
+]
+
+const members = [
+  {
+    name: '山田 太郎',
+    role: '代表取締役CEO',
+    bio: '大手IT企業で10年以上の経験を積み、2020年に当社を設立。技術とビジネスの両面からお客様をサポートします。',
+    image: '👨‍💼'
+  },
+  {
+    name: '佐藤 花子',
+    role: 'CTO / 技術責任者',
+    bio: 'フルスタックエンジニアとして数多くのプロジェクトをリード。最新技術の導入と品質管理を担当しています。',
+    image: '👩‍💻'
+  },
+  {
+    name: '鈴木 次郎',
+    role: 'デザインディレクター',
+    bio: 'UI/UXデザインのスペシャリスト。ユーザー体験を重視した美しいデザインを追求しています。',
+    image: '👨‍🎨'
+  }
+]
+---
+
+<Base title="会社概要 | 会社サイト" description="株式会社テックソリューションの会社概要、理念、メンバー紹介">
+  <!-- Hero Section -->
+  <section class="mb-16">
+    <h1 class="text-4xl font-bold mb-4">会社概要</h1>
+    <p class="text-xl text-gray-600">
+      テクノロジーの力でビジネスの未来を創造する
+    </p>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="mb-16 py-12 bg-gradient-to-r from-blue-50 to-purple-50 -mx-6 px-6 rounded-lg">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-6">私たちのミッション</h2>
+      <p class="text-lg text-gray-700 leading-relaxed">
+        最新のテクノロジーとクリエイティブな発想を融合させ、<br />
+        お客様のビジネスに革新をもたらすソリューションを提供します。<br />
+        私たちは、デジタルの力でより良い未来を創造することを目指しています。
+      </p>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold mb-8 text-center">私たちの価値観</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      {values.map((value) => (
+        <div class="text-center p-6">
+          <div class="text-5xl mb-4">{value.icon}</div>
+          <h3 class="text-xl font-semibold mb-3">{value.title}</h3>
+          <p class="text-gray-600">{value.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Company Info Section -->
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold mb-8">会社情報</h2>
+    <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
+      <table class="w-full">
+        <tbody>
+          <tr class="border-b border-gray-200">
+            <th class="bg-gray-50 px-6 py-4 text-left font-semibold w-1/3">会社名</th>
+            <td class="px-6 py-4">{companyInfo.name}</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <th class="bg-gray-50 px-6 py-4 text-left font-semibold">設立</th>
+            <td class="px-6 py-4">{companyInfo.established}</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <th class="bg-gray-50 px-6 py-4 text-left font-semibold">資本金</th>
+            <td class="px-6 py-4">{companyInfo.capital}</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <th class="bg-gray-50 px-6 py-4 text-left font-semibold">従業員数</th>
+            <td class="px-6 py-4">{companyInfo.employees}</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <th class="bg-gray-50 px-6 py-4 text-left font-semibold">代表者</th>
+            <td class="px-6 py-4">{companyInfo.ceo}</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <th class="bg-gray-50 px-6 py-4 text-left font-semibold">所在地</th>
+            <td class="px-6 py-4">{companyInfo.address}</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <th class="bg-gray-50 px-6 py-4 text-left font-semibold">電話番号</th>
+            <td class="px-6 py-4">{companyInfo.phone}</td>
+          </tr>
+          <tr>
+            <th class="bg-gray-50 px-6 py-4 text-left font-semibold">メール</th>
+            <td class="px-6 py-4">{companyInfo.email}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold mb-8 text-center">経営チーム</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      {members.map((member) => (
+        <div class="bg-white border border-gray-200 rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
+          <div class="text-6xl mb-4">{member.image}</div>
+          <h3 class="text-xl font-semibold mb-1">{member.name}</h3>
+          <p class="text-blue-600 font-medium mb-4">{member.role}</p>
+          <p class="text-gray-600 text-sm leading-relaxed">{member.bio}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-12 bg-blue-600 text-white -mx-6 px-6 rounded-lg text-center">
+    <h2 class="text-3xl font-bold mb-4">一緒に働きませんか？</h2>
+    <p class="text-lg mb-8 opacity-90">
+      私たちは常に優秀な人材を求めています。
+    </p>
+    <a href="/contact" class="inline-block bg-white text-blue-600 hover:bg-gray-100 font-semibold px-8 py-3 rounded-lg transition-colors duration-200">
+      採用について問い合わせる
+    </a>
+  </section>
+</Base>
