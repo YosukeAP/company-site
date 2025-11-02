@@ -45,9 +45,43 @@ const services = [
     image: serviceConsultingImage
   }
 ]
+
+// Organization構造化データ
+const baseUrl = Astro.site?.href || 'https://example.com';
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "株式会社テックソリューション",
+  "url": baseUrl,
+  "logo": `${baseUrl}/favicon.svg`,
+  "description": "最新技術を活用したWebサイト制作、システム開発、コンサルティングサービスを提供します。",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "東京都",
+    "addressLocality": "千代田区",
+    "postalCode": "100-0001",
+    "streetAddress": "千代田1-1-1"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+81-3-1234-5678",
+    "contactType": "customer service",
+    "areaServed": "JP",
+    "availableLanguage": "Japanese"
+  },
+  "sameAs": [
+    // SNSアカウントがあればここに追加
+    // "https://twitter.com/yourcompany",
+    // "https://www.facebook.com/yourcompany"
+  ]
+};
 ---
 
 <Base title="会社サイト | デジタルソリューションのパートナー" description="最新技術を活用したWebサイト制作、システム開発、コンサルティングサービスを提供します。">
+  {/* Organization構造化データ */}
+  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+  
   <!-- Hero Section -->
   <section class="relative py-16 text-center overflow-hidden -mx-6 px-6">
     {/* Hero背景画像 - loading="eager"でLCP最適化、fetchpriority="high"で優先読み込み */}

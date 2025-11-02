@@ -1,6 +1,12 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import {sanity} from '../../lib/sanityClient'
+
+const breadcrumbItems = [
+  { label: 'ホーム', href: '/' },
+  { label: 'ブログ' }
+];
 
 // 最新順にタイトル・スラッグ・日付・本文の先頭テキスト
 const posts = await sanity.fetch(`
@@ -24,6 +30,8 @@ const posts = await sanity.fetch(`
 ---
 
 <Base title="ブログ一覧 | 会社サイト" description="会社サイトのブログ記事一覧です。">
+  <Breadcrumbs items={breadcrumbItems} />
+  
   <div>
     <h1 class="text-3xl font-bold mb-8">ブログ</h1>
     <ul class="space-y-6">

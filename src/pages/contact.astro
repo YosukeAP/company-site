@@ -2,9 +2,17 @@
 // src/pages/contact.astro
 // Netlify Forms対応のお問い合わせページ
 import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const breadcrumbItems = [
+  { label: 'ホーム', href: '/' },
+  { label: 'お問い合わせ' }
+];
 ---
 
 <Base title="お問い合わせ | 会社サイト" description="お問い合わせフォームをご記入ください。担当者よりご連絡いたします。">
+  <Breadcrumbs items={breadcrumbItems} />
+  
   <div class="max-w-2xl mx-auto">
     <h1 class="text-3xl font-bold mb-4">お問い合わせ</h1>
     <p class="mb-8 text-gray-600">

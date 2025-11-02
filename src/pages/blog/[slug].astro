@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import {sanity} from '../../lib/sanityClient'
 import {PortableText} from 'astro-portabletext'
 import imageUrlBuilder from '@sanity/image-url'
@@ -54,34 +55,49 @@ const extractText = (body: any) => {
 
 const description = extractText(post.body)
 
+// パンくずリスト
+const breadcrumbItems = [
+  { label: 'ホーム', href: '/' },
+  { label: 'ブログ', href: '/blog' },
+  { label: post.title }
+];
+
 // JSON-LD構造化データ（Article スキーマ）
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": post.title,
+  "description": description,
   "datePublished": post._createdAt,
   "dateModified": post._updatedAt,
   "author": {
     "@type": "Organization",
-    "name": "会社サイト"
+    "name": "株式会社テックソリューション",
+    "url": baseUrl
   },
   "publisher": {
     "@type": "Organization",
-    "name": "会社サイト"
+    "name": "株式会社テックソリューション",
+    "url": baseUrl,
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${baseUrl}/favicon.svg`
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": postUrl
   }
 }
 ---
 
 <Base title={`${post.title} | ブログ`} description={description} ogType="article" ogUrl={postUrl}>
+  {/* 構造化データ（JSON-LD） */}
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  
+  <Breadcrumbs items={breadcrumbItems} />
+  
   <div class="max-w-3xl mx-auto">
-    {/* 構造化データ（JSON-LD） */}
-    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
-    
-    <p class="mb-6">
-      <a href="/blog" class="text-blue-600 hover:text-blue-800 transition-colors">
-        ← 一覧に戻る
-      </a>
-    </p>
     
     <h1 class="text-4xl font-bold mb-4">{post.title}</h1>
     <time class="text-sm text-gray-500 block mb-8">

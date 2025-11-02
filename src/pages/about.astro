@@ -1,7 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
 import { Image } from 'astro:assets';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 import teamImage from '../assets/images/about-team.svg';
+
+const breadcrumbItems = [
+  { label: 'ホーム', href: '/' },
+  { label: '会社概要' }
+];
 
 const companyInfo = {
   name: '株式会社テックソリューション',
@@ -55,6 +61,8 @@ const members = [
 ---
 
 <Base title="会社概要 | 会社サイト" description="株式会社テックソリューションの会社概要、理念、メンバー紹介">
+  <Breadcrumbs items={breadcrumbItems} />
+  
   <!-- Hero Section -->
   <section class="mb-16">
     <div class="mb-8 rounded-lg overflow-hidden">

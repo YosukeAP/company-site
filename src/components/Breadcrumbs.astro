@@ -1,0 +1,46 @@
+---
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+const baseUrl = Astro.site?.href || 'https://example.com';
+
+// BreadcrumbList構造化データ
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": items.map((item, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": item.label,
+    ...(item.href && { "item": `${baseUrl}${item.href}` })
+  }))
+};
+---
+
+<!-- 構造化データ -->
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+<!-- パンくずリストUI -->
+<nav aria-label="パンくずリスト" class="mb-6">
+  <ol class="flex items-center gap-2 text-sm text-gray-600">
+    {items.map((item, index) => (
+      <li class="flex items-center gap-2">
+        {index > 0 && <span class="text-gray-400">/</span>}
+        {item.href ? (
+          <a href={item.href} class="hover:text-blue-600 transition-colors">
+            {item.label}
+          </a>
+        ) : (
+          <span class="text-gray-900 font-medium">{item.label}</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>

@@ -17,6 +17,8 @@ const {
 
 const siteName = '会社サイト';
 const currentPath = Astro.url.pathname;
+const baseUrl = Astro.site?.href || 'https://example.com';
+const canonicalUrl = ogUrl || `${baseUrl}${currentPath}`;
 ---
 
 <!doctype html>
@@ -28,6 +30,12 @@ const currentPath = Astro.url.pathname;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		
+		{/* Canonical URL */}
+		<link rel="canonical" href={canonicalUrl} />
+		
+		{/* Robots */}
+		<meta name="robots" content="index, follow" />
 		
 		{/* OGP */}
 		<meta property="og:type" content={ogType} />

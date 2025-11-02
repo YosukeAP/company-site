@@ -1,5 +1,11 @@
 ---
 import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const breadcrumbItems = [
+  { label: 'ホーム', href: '/' },
+  { label: 'サービス一覧' }
+];
 
 const services = [
   {
@@ -84,6 +90,8 @@ const services = [
 ---
 
 <Base title="サービス一覧 | 会社サイト" description="Webサイト制作、システム開発、コンサルティングなど、幅広いサービスを提供しています。">
+  <Breadcrumbs items={breadcrumbItems} />
+  
   <div class="mb-12">
     <h1 class="text-4xl font-bold mb-4">サービス一覧</h1>
     <p class="text-xl text-gray-600">
