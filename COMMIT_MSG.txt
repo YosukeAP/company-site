@@ -1,8 +1,9 @@
-feat: プロジェクト初期セットアップとGitワークフロー追加
+feat(site): お問い合わせページ追加とRSS/SEO整備
 
-Astroプロジェクトの初期セットアップを完了
-
-Sanity統合とブログ機能の実装
-.gitignoreに.sanityと.env.*.localを追加
-commitスクリプトとCursorカスタムコマンドを設定
+Netlify Forms対応のcontactページをpublicとsrc/pagesに追加
+ホームにお問い合わせとブログ一覧への導線を追加
+ブログRSSをsrc/pages/blog/rss.xml.tsとして追加
+OGP/Twitterカードと記事JSON-LDを記事/トップに設定
+サイトマップ統合とastro.config.mjsにsite設定雛形を追加
+SanityのprojectId修正とブログ一覧の抜粋生成をJS側で処理
 

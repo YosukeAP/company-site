@@ -7,9 +7,19 @@ const posts = await sanity.fetch(`
     title,
     "slug": slug.current,
     _createdAt,
-    "excerpt": string::slice(pt::text(body), 0, 120)
+    body
   }
-`)
+`).then((posts: any[]) => 
+  posts.map((post: any) => ({
+    ...post,
+    excerpt: typeof post.body === 'string' 
+      ? post.body.slice(0, 120)
+      : post.body?.filter((block: any) => block._type === 'block')
+          .map((block: any) => block.children?.map((child: any) => child.text).join('') || '')
+          .join(' ')
+          .slice(0, 120) || ''
+  }))
+)
 ---
 
 <html lang="ja">
