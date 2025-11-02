@@ -1,4 +1,5 @@
 ---
+import Layout from '../layouts/Layout.astro';
 import {createClient} from '@sanity/client'
 import {PortableText} from 'astro-portabletext'
 
@@ -13,26 +14,8 @@ const query = `*[_type=="post"]|order(_createdAt desc)[0]{title, body}`
 const post = await client.fetch(query)
 ---
 
-<html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>会社サイト</title>
-    <meta name="description" content="会社サイトのホームページです。" />
-    
-    {/* OGP */}
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="会社サイト" />
-    <meta property="og:description" content="会社サイトのホームページです。" />
-    <meta property="og:site_name" content="会社サイト" />
-    <meta property="og:locale" content="ja_JP" />
-    
-    {/* Twitter Card */}
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="会社サイト" />
-    <meta name="twitter:description" content="会社サイトのホームページです。" />
-  </head>
-  <body style="font-family: system-ui, sans-serif; margin: 2rem auto; max-width: 920px;">
+<Layout title="会社サイト" description="会社サイトのホームページです。">
+  <div style="margin: 2rem auto; max-width: 920px; padding: 1rem;">
     <h1>最新記事</h1>
 
     {post ? (
@@ -44,10 +27,9 @@ const post = await client.fetch(query)
       <p>まだ記事がありません。</p>
     )}
 
-    <!-- ← 条件分岐ブロックの直後にこれを入れる -->
     <p style="margin-top:2rem;">
       <a href="/blog">ブログ一覧へ</a> | 
       <a href="/contact">お問い合わせ</a>
     </p>
-  </body>
-</html>
+  </div>
+</Layout>

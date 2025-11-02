@@ -1,4 +1,5 @@
 ---
+import Layout from '../../layouts/Layout.astro';
 import {sanity} from '../../lib/sanityClient'
 
 // 最新順にタイトル・スラッグ・日付・本文の先頭テキスト
@@ -22,12 +23,8 @@ const posts = await sanity.fetch(`
 )
 ---
 
-<html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <title>ブログ一覧</title>
-  </head>
-  <body style="font-family: system-ui,sans-serif; margin: 2rem auto; max-width: 920px;">
+<Layout title="ブログ一覧 | 会社サイト" description="会社サイトのブログ記事一覧です。">
+  <div style="margin: 2rem auto; max-width: 920px; padding: 1rem;">
     <h1>ブログ</h1>
     <ul style="list-style:none; padding:0;">
       {posts.map((p:any) => (
@@ -41,5 +38,5 @@ const posts = await sanity.fetch(`
       ))}
     </ul>
     <p><a href="/">← トップへ戻る</a></p>
-  </body>
-</html>
+  </div>
+</Layout>

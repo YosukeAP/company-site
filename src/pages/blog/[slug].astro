@@ -1,4 +1,5 @@
 ---
+import Layout from '../../layouts/Layout.astro';
 import {sanity} from '../../lib/sanityClient'
 import {PortableText} from 'astro-portabletext'
 import imageUrlBuilder from '@sanity/image-url'
@@ -32,7 +33,6 @@ if (!post) {
 // サイトのベースURL
 const baseUrl = Astro.site?.href || 'https://example.com'; // デプロイ後に実際のURLに変更
 const postUrl = `${baseUrl}/blog/${slug}`
-const siteName = '会社サイト'
 
 // 本文からテキストを抽出（OGP説明用）
 const extractText = (body: any) => {
@@ -58,39 +58,20 @@ const articleSchema = {
   "dateModified": post._updatedAt,
   "author": {
     "@type": "Organization",
-    "name": siteName
+    "name": "会社サイト"
   },
   "publisher": {
     "@type": "Organization",
-    "name": siteName
+    "name": "会社サイト"
   }
 }
 ---
 
-<html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{post.title} | ブログ</title>
-    <meta name="description" content={description} />
-    
-    {/* OGP */}
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content={post.title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={postUrl} />
-    <meta property="og:site_name" content={siteName} />
-    <meta property="og:locale" content="ja_JP" />
-    
-    {/* Twitter Card */}
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={post.title} />
-    <meta name="twitter:description" content={description} />
-    
+<Layout title={`${post.title} | ブログ`} description={description} ogType="article" ogUrl={postUrl}>
+  <div style="margin: 2rem auto; max-width: 720px; padding: 1rem;">
     {/* 構造化データ（JSON-LD） */}
     <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
-  </head>
-  <body style="font-family: system-ui,sans-serif; margin: 2rem auto; max-width: 720px;">
+    
     <p><a href="/blog">← 一覧に戻る</a></p>
     <h1>{post.title}</h1>
     <small>更新日: {new Date(post._updatedAt).toLocaleDateString('ja-JP')}</small>
@@ -112,5 +93,5 @@ const articleSchema = {
         }}
       />
     </article>
-  </body>
-</html>
+  </div>
+</Layout>

@@ -1,19 +1,15 @@
 ---
 // src/pages/contact.astro
 // Netlify Forms対応のお問い合わせページ
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>お問い合わせ | 会社サイト</title>
-  </head>
-  <body style="font-family: system-ui, sans-serif; margin: 2rem auto; max-width: 720px; padding: 1rem;">
+<Layout title="お問い合わせ | 会社サイト" description="お問い合わせフォームをご記入ください。担当者よりご連絡いたします。">
+  <div style="margin: 2rem auto; max-width: 720px; padding: 1rem;">
     <h1>お問い合わせ</h1>
     <p>お問い合わせフォームをご記入ください。担当者よりご連絡いたします。</p>
     
-    <form name="contact" method="POST" netlify>
+    <form name="contact" method="POST" data-netlify="true">
       <input type="hidden" name="form-name" value="contact" />
       
       <div style="margin-bottom: 1.5rem;">
@@ -68,6 +64,5 @@
     </form>
     
     <p style="margin-top: 2rem;"><a href="/">← トップへ戻る</a></p>
-  </body>
-</html>
-
+  </div>
+</Layout>
