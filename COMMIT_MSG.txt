@@ -1,6 +1,6 @@
-feat(site): Netlify最適化とSEO/フォーム機能強化
+feat(site): Netlify最適化とSEO/フォーム機能強化完了
 
-Netlify Forms対応完了（データ属性・honeypot・成功ページ）
+Netlify Forms対応完了（データ属性・honeypot構成）
 contact/successページ追加でUX改善
 ブログ一覧にviewportメタ追加
 全URL参照をassetpartners.jpに統一
