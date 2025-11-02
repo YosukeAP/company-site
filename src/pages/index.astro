@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Base from '../layouts/Base.astro';
 import {createClient} from '@sanity/client'
 import {PortableText} from 'astro-portabletext'
 
@@ -14,22 +14,19 @@ const query = `*[_type=="post"]|order(_createdAt desc)[0]{title, body}`
 const post = await client.fetch(query)
 ---
 
-<Layout title="会社サイト" description="会社サイトのホームページです。">
-  <div style="margin: 2rem auto; max-width: 920px; padding: 1rem;">
-    <h1>最新記事</h1>
+<Base title="会社サイト" description="会社サイトのホームページです。">
+  <div class="prose max-w-none">
+    <h1 class="text-3xl font-bold mb-6">最新記事</h1>
 
     {post ? (
       <>
-        <h2>{post.title}</h2>
-        <PortableText value={post.body} />
+        <h2 class="text-2xl font-semibold mt-8 mb-4">{post.title}</h2>
+        <div class="mt-4">
+          <PortableText value={post.body} />
+        </div>
       </>
     ) : (
-      <p>まだ記事がありません。</p>
+      <p class="text-gray-600">まだ記事がありません。</p>
     )}
-
-    <p style="margin-top:2rem;">
-      <a href="/blog">ブログ一覧へ</a> | 
-      <a href="/contact">お問い合わせ</a>
-    </p>
   </div>
-</Layout>
+</Base>

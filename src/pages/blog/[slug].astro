@@ -1,5 +1,5 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import Base from '../../layouts/Base.astro';
 import {sanity} from '../../lib/sanityClient'
 import {PortableText} from 'astro-portabletext'
 import imageUrlBuilder from '@sanity/image-url'
@@ -67,16 +67,23 @@ const articleSchema = {
 }
 ---
 
-<Layout title={`${post.title} | ブログ`} description={description} ogType="article" ogUrl={postUrl}>
-  <div style="margin: 2rem auto; max-width: 720px; padding: 1rem;">
+<Base title={`${post.title} | ブログ`} description={description} ogType="article" ogUrl={postUrl}>
+  <div class="max-w-3xl mx-auto">
     {/* 構造化データ（JSON-LD） */}
     <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
     
-    <p><a href="/blog">← 一覧に戻る</a></p>
-    <h1>{post.title}</h1>
-    <small>更新日: {new Date(post._updatedAt).toLocaleDateString('ja-JP')}</small>
+    <p class="mb-6">
+      <a href="/blog" class="text-blue-600 hover:text-blue-800 transition-colors">
+        ← 一覧に戻る
+      </a>
+    </p>
+    
+    <h1 class="text-4xl font-bold mb-4">{post.title}</h1>
+    <time class="text-sm text-gray-500 block mb-8">
+      更新日: {new Date(post._updatedAt).toLocaleDateString('ja-JP')}
+    </time>
 
-    <article style="margin-top:1rem;">
+    <article class="prose prose-lg max-w-none">
       <PortableText
         value={post.body}
         components={{
@@ -86,7 +93,7 @@ const articleSchema = {
               <img
                 src={urlFor(value).width(1200).fit('max').url()}
                 alt={value?.alt || ''}
-                style="max-width:100%; height:auto; border-radius:8px; margin:1rem 0;"
+                class="w-full h-auto rounded-lg my-6"
               />
             )
           }
@@ -94,4 +101,4 @@ const articleSchema = {
       />
     </article>
   </div>
-</Layout>
+</Base>

@@ -2,10 +2,18 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
+import tailwindcss from '@tailwindcss/vite';
+
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com', // デプロイ後に実際のURLに変更
+  // デプロイ後に実際のURLに変更
+  site: 'https://example.com',
+
   integrations: [
     sitemap()
-  ]
+  ],
+
+  vite: {
+    plugins: [tailwindcss()]
+  }
 });
