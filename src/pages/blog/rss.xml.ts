@@ -13,7 +13,7 @@ export const GET: APIRoute = async () => {
     }
   `);
 
-  const baseUrl = import.meta.env.SITE || 'https://example.com'; // デプロイ後に実際のURLに変更
+  const baseUrl = import.meta.env.SITE || 'https://assetpartners.jp'
 
   return rss({
     title: '会社サイト ブログ',
