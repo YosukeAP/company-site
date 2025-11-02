@@ -1,46 +1,36 @@
-# Astro Starter Kit: Basics
+# Company Site
 
-```sh
-npm create astro@latest -- --template basics
+会社サイト（Astro + Sanity）
+
+## セットアップ
+
+```bash
+# 依存関係のインストール
+npm install
+
+# 開発サーバー起動
+npm run dev
+
+# ビルド
+npm run build
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## デプロイ
 
-## 🚀 Project Structure
+- **サイト**: Vercel にデプロイ
+- **Studio**: Sanity Studio にデプロイ済み
 
-Inside of your Astro project, you'll see the following folders and files:
+## 環境変数
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+プロジェクトルートに `.env.local` を作成（必要な場合）:
+
+```bash
+# Sanity
+SANITY_STUDIO_PROJECT_ID=vdcrzio7
+SANITY_STUDIO_DATASET=production
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## ドメイン
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **メインサイト**: https://assetpartners.jp
+- **Studio**: https://company-site-homepages.sanity.studio

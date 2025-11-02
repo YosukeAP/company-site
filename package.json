@@ -10,6 +10,9 @@
     "commit": "git add -A && git commit -F COMMIT_MSG.txt"
   },
   "dependencies": {
+    "@astrojs/rss": "^4.0.13",
+    "@astrojs/sitemap": "^3.6.0",
+    "@sanity/client": "^6.15.15",
     "@sanity/image-url": "^1.2.0",
     "astro": "^5.15.3",
     "astro-portabletext": "^0.11.3"

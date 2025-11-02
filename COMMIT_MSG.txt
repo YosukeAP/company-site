@@ -1,9 +1,9 @@
-feat(site): お問い合わせページ追加とRSS/SEO整備
+feat(ci): Vercelデプロイ準備とドメイン設定完了
 
-Netlify Forms対応のcontactページをpublicとsrc/pagesに追加
-ホームにお問い合わせとブログ一覧への導線を追加
-ブログRSSをsrc/pages/blog/rss.xml.tsとして追加
-OGP/Twitterカードと記事JSON-LDを記事/トップに設定
-サイトマップ統合とastro.config.mjsにsite設定雛形を追加
-SanityのprojectId修正とブログ一覧の抜粋生成をJS側で処理
+Vercel用設定ファイルvercel.jsonを追加
+ドメイン参照をassetpartners.jpに更新
+依存関係追加（@astrojs/rss, @astrojs/sitemap, @sanity/client）
+ビルドエラー修正（PortableTextコンポーネント）
+Sanityクライアント共通化（index.astro）
+READMEにデプロイ手順を追加
 

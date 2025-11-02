@@ -1,11 +1,6 @@
 ---
 import {sanity} from '../../lib/sanityClient'
 import {PortableText} from 'astro-portabletext'
-import imageUrlBuilder from '@sanity/image-url'
-
-// 画像用ヘルパ
-const builder = imageUrlBuilder(sanity)
-const urlFor = (src:any) => builder.image(src)
 
 export async function getStaticPaths() {
   // ここで全記事の slug を集めて静的に生成（ビルド時）
@@ -96,21 +91,7 @@ const articleSchema = {
     <small>更新日: {new Date(post._updatedAt).toLocaleDateString('ja-JP')}</small>
 
     <article style="margin-top:1rem;">
-      <PortableText
-        value={post.body}
-        components={{
-          // Portable Text内の画像表示（altに対応）
-          types: {
-            image: ({value}:any) => (
-              <img
-                src={urlFor(value).width(1200).fit('max').url()}
-                alt={value?.alt || ''}
-                style="max-width:100%; height:auto; border-radius:8px; margin:1rem 0;"
-              />
-            )
-          }
-        }}
-      />
+      <PortableText value={post.body} />
     </article>
   </body>
 </html>

@@ -1,16 +1,9 @@
 ---
-import {createClient} from '@sanity/client'
+import {sanity} from '../lib/sanityClient'
 import {PortableText} from 'astro-portabletext'
 
-const client = createClient({
-  projectId: 'vdcrzio7',
-  dataset: 'production',
-  apiVersion: '2025-01-01',
-  useCdn: true,
-})
-
 const query = `*[_type=="post"]|order(_createdAt desc)[0]{title, body}`
-const post = await client.fetch(query)
+const post = await sanity.fetch(query)
 ---
 
 <html lang="ja">

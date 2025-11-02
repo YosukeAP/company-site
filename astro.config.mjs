@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com', // デプロイ後に実際のURLに変更
+  site: 'https://assetpartners.jp',
   integrations: [
     sitemap()
   ]
