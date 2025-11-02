@@ -2,6 +2,10 @@
 
 会社サイト（Astro + Sanity）
 
+## 📚 ドキュメント
+
+- **デプロイ手順**: [NETLIFY_SETUP_GUIDE.md](./NETLIFY_SETUP_GUIDE.md) を参照
+
 ## セットアップ
 
 ```bash
@@ -17,7 +21,7 @@ npm run build
 
 ## デプロイ
 
-- **サイト**: Vercel にデプロイ
+- **サイト**: Netlify にデプロイ
 - **Studio**: Sanity Studio にデプロイ済み
 
 ## 環境変数

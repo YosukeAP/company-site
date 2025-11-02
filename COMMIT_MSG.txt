@@ -1,9 +1,8 @@
-feat(ci): Vercelデプロイ準備とドメイン設定完了
+feat(ci): Netlifyデプロイ設定完了とフォーム対応
 
-Vercel用設定ファイルvercel.jsonを追加
-ドメイン参照をassetpartners.jpに更新
-依存関係追加（@astrojs/rss, @astrojs/sitemap, @sanity/client）
-ビルドエラー修正（PortableTextコンポーネント）
-Sanityクライアント共通化（index.astro）
-READMEにデプロイ手順を追加
+vercel.jsonをnetlify.tomlに置き換え
+Netlify Formsに対応（data-netlify属性追加）
+重複contact.htmlを削除
+初心者向けデプロイ手順ガイド追加
+ドメイン参照をassetpartners.jpに更新済み
 
