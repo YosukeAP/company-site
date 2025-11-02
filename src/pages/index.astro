@@ -1,0 +1,36 @@
+---
+import {createClient} from '@sanity/client'
+import {PortableText} from 'astro-portabletext'
+
+const client = createClient({
+  projectId: 'dvcrzi07',
+  dataset: 'production',
+  apiVersion: '2025-01-01',
+  useCdn: true,
+})
+
+const query = `*[_type=="post"]|order(_createdAt desc)[0]{title, body}`
+const post = await client.fetch(query)
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>会社サイト</title>
+  </head>
+  <body style="font-family: system-ui, sans-serif; margin: 2rem auto; max-width: 920px;">
+    <h1>最新記事</h1>
+
+    {post ? (
+      <>
+        <h2>{post.title}</h2>
+        <PortableText value={post.body} />
+      </>
+    ) : (
+      <p>まだ記事がありません。</p>
+    )}
+
+    <!-- ← 条件分岐ブロックの直後にこれを入れる -->
+    <p style="margin-top:2rem;"><a href="/blog">ブログ一覧へ</a></p>
+  </body>
+</html>

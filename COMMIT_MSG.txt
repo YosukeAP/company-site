@@ -1,0 +1,8 @@
+feat: プロジェクト初期セットアップとGitワークフロー追加
+
+Astroプロジェクトの初期セットアップを完了
+
+Sanity統合とブログ機能の実装
+.gitignoreに.sanityと.env.*.localを追加
+commitスクリプトとCursorカスタムコマンドを設定
+

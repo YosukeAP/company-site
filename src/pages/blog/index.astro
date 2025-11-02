@@ -1,0 +1,35 @@
+---
+import {sanity} from '../../lib/sanityClient'
+
+// 最新順にタイトル・スラッグ・日付・本文の先頭テキスト
+const posts = await sanity.fetch(`
+  *[_type=="post"]|order(_createdAt desc){
+    title,
+    "slug": slug.current,
+    _createdAt,
+    "excerpt": string::slice(pt::text(body), 0, 120)
+  }
+`)
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>ブログ一覧</title>
+  </head>
+  <body style="font-family: system-ui,sans-serif; margin: 2rem auto; max-width: 920px;">
+    <h1>ブログ</h1>
+    <ul style="list-style:none; padding:0;">
+      {posts.map((p:any) => (
+        <li style="margin:1rem 0; padding:1rem; border:1px solid #ddd; border-radius:8px;">
+          <a href={`/blog/${p.slug}`} style="text-decoration:none;">
+            <h2 style="margin:.2rem 0;">{p.title}</h2>
+          </a>
+          <small>{new Date(p._createdAt).toLocaleDateString('ja-JP')}</small>
+          <p style="margin:.5rem 0 0;">{p.excerpt}…</p>
+        </li>
+      ))}
+    </ul>
+    <p><a href="/">← トップへ戻る</a></p>
+  </body>
+</html>

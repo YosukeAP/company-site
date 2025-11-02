@@ -1,0 +1,17 @@
+{
+  "name": "company-site",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "commit": "git add -A && git commit -F COMMIT_MSG.txt"
+  },
+  "dependencies": {
+    "@sanity/image-url": "^1.2.0",
+    "astro": "^5.15.3",
+    "astro-portabletext": "^0.11.3"
+  }
+}
