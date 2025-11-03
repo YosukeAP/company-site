@@ -19,7 +19,9 @@ pnpm-debug.log*
 
 # Sanity
 .sanity
-homepages/
+homepages/node_modules/
+homepages/dist/
+homepages/.sanity/
 
 # macOS-specific files
 .DS_Store
